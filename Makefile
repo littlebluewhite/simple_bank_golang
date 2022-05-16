@@ -14,6 +14,9 @@ migratedown:
 	migrate -path db/migration -database "postgresql://root:123456@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
 sqlcGenerate:
-	docker run --rm -v C:\Users\wwils\Documents\project\golangTest:/src -w /src kjconroy/sqlc generate
+	docker run --rm -v C:\Users\wwils\Documents\project\simple_bank_golang:/src -w /src kjconroy/sqlc generate
+
+test:
+	go test -v -cover ./...
 
 .PHONY: postgres createdb dropdb migratedown migrateup, sqlcGenerate
